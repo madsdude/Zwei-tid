@@ -1,5 +1,7 @@
 # Login Page Application
 
+*Ændring foretaget d. 24. juni 2025 for at teste GitHub push.*
+
 This project is a simple login page application that uses an SQL database and runs in a Docker container. It is built using Node.js and Express, with Sequelize for database interaction.
 
 ## Project Structure
