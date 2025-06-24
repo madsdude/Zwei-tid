@@ -22,7 +22,18 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 // Route for login page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'login.html'));
+    if (req.session.user) {
+        res.sendFile(path.join(__dirname, 'views', 'welcome.html'));
+    } else {
+        res.sendFile(path.join(__dirname, 'views', 'login.html'));
+    }
+});
+
+// Logout route
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/');
+    });
 });
 
 // Database connection

@@ -10,18 +10,13 @@ const User = sequelize.define('User', {
     password: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
     }
 }, {
     timestamps: true
 });
 
-User.createUser = async function(username, password, email) {
-    return await User.create({ username, password, email });
+User.createUser = async function(username, password) {
+    return await User.create({ username, password });
 };
 
 User.findByUsername = async function(username) {

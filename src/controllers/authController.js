@@ -3,11 +3,11 @@ const bcrypt = require('bcrypt');
 
 class AuthController {
     async register(req, res) {
-        const { username, password, email } = req.body;
+        const { username, password } = req.body;
         try {
             const hashedPassword = await bcrypt.hash(password, 10);
-            const user = await User.createUser(username, hashedPassword, email);
-            res.status(201).json({ message: 'User registered', user: { username: user.username, email: user.email } });
+            const user = await User.createUser(username, hashedPassword);
+            res.status(201).json({ message: 'User registered', user: { username: user.username } });
         } catch (err) {
             res.status(400).json({ error: err.message });
         }
